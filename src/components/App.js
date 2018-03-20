@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../styling/App.css';
+import AvatarList from './AvatarList.jsx';
+import SelectedAvatar from './SelectedAvatar';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      </div>
-    );
-  }
+function App(props){
+  return (
+    <div className="App">
+    </div>
+  );
 }
 
 export default App;
