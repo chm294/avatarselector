@@ -1,16 +1,16 @@
 import React from 'react';
-import AvatarListEntry from './AvatarListEntry';
+import AvatarListEntry from './AvatarListEntry.jsx';
 
-sampleData = [
-  { "src": "../../public/avatars/avatar1.png", "label": "Avatar 1", "id": 1 },
-  { "src": "../../public/avatars/avatar2.png", "label": "Avatar 2", "id": 2 },
-  { "src": "../../public/avatars/avatar3.png", "label": "Avatar 3", "id": 3 },
-  { "src": "../../public/avatars/avatar4.png", "label": "Avatar 4", "id": 4 },
-  { "src": "../../public/avatars/avatar5.png", "label": "Avatar 5", "id": 5 },
-  { "src": "../../public/avatars/avatar6.png", "label": "Avatar 6", "id": 6 }
+const sampleData = [
+  { "src": "/avatar1.png", "label": "Avatar 1", "id": 1 },
+  { "src": "/avatar2.png", "label": "Avatar 2", "id": 2 },
+  { "src": "/avatar3.png", "label": "Avatar 3", "id": 3 },
+  { "src": "/avatar4.png", "label": "Avatar 4", "id": 4 },
+  { "src": "/avatar5.png", "label": "Avatar 5", "id": 5 },
+  { "src": "/avatar6.png", "label": "Avatar 6", "id": 6 }
 ]
 
-export default class AvatarList extends React.component {
+export default class AvatarList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,10 +18,21 @@ export default class AvatarList extends React.component {
 		}
 	}
 	render() {
-		<div>
-			{sampleData.forEach(function(avatar) {
-				return <AvatarListEntry avatar="avatar" />
-			})}
-		</div>
+		return(
+			<div className="avatar-list-container">
+				<p className="choose-avatar-text">Choose your avatar</p>
+				<div className="avatar-list">
+					{
+						sampleData.map( (avatar) => {
+							return <AvatarListEntry 
+												avatar={avatar} 
+												key={avatar.id} 
+												handleNewAvatar={this.props.handleNewAvatar} 
+												/>
+						})
+					}
+				</div>
+			</div>
+		)
 	}
 }

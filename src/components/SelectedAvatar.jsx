@@ -1,12 +1,14 @@
 import React from 'react';
 
-function SelectedAvatar(props){
+export default class SelectedAvatar extends React.Component {
+  render() {
     return (
-      <div >
-          {this.props.avatar}
+      <div className="selectedContainer" onClick={()=>this.props.toggleList()}>
+        <img 
+        src={require(`../avatars/avatar${this.props.selectedAvatar}.png`)} 
+        className="avatar selected"
+        alt="" />
       </div>
     );
   }
-  
-  export default SelectedAvatar;
-  
+  }

@@ -1,28 +1,42 @@
 .App {
+  display: flex;
   text-align: center;
 }
-/* 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.avatar-picker {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.avatar-list-container {
+  background-color: rgb(44, 48, 51);
+  width: 280px;
+  border-radius: 2px;
 }
-
-.App-title {
-  font-size: 1.5em;
+.avatar-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  height: auto;
 }
-
-.App-intro {
-  font-size: large;
+.choose-avatar-text {
+  color: rgb(249, 249, 249);
+  font-size: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: .2s ease;
+}
+.selectedContainer {
+  width: 280px;
+}
+.selected:hover {
+  border: 1px solid rgb(155, 160, 163);
+}
+.list-item:hover {
+  border: 3px solid rgb(155, 160, 163);
+  opacity: 0.2;
+}
