@@ -4,10 +4,6 @@
   margin: 5%;
 }
 
-li {
-  list-style-type: none;
-}
-
 /* general text */
 .text {
   color: rgb(249, 249, 249);
@@ -62,17 +58,17 @@ li {
 }
 
 /* avatar list container popup animation */
-.example-enter {
+.popover-enter {
   transform:scale(.1);
 }
-.example-enter.example-enter-active {
+.popover-enter.popover-enter-active {
   transform: scale(1.1);
   transition: all .3s ease-in-out;
 }
-.example-leave {
+.popover-leave {
   transform: scale(1);
 }
-.example-leave.example-leave-active {
+.popover-leave.popover-leave-active {
   transform: scale(0);
   transition: all .3s ease-in-out;
 }
@@ -116,11 +112,11 @@ ul.avatar-list {
   left: -3px;
   width: 57px;
   height: 57px;
-  border: 3px solid rgb(44, 48, 51);
+  border: 3px solid rgb(122, 161, 178);
   border-radius: 50%;
-  border-top: 3px solid rgb(122, 161, 178);
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+  border-top: 3px solid rgb(44, 48, 51);
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

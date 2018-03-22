@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SelectedAvatar extends React.Component {
   constructor(props){
@@ -31,3 +32,8 @@ export default class SelectedAvatar extends React.Component {
     );
   }
 };
+
+SelectedAvatar.propTypes = {
+  toggleList : PropTypes.func.isRequired,
+  selectedAvatar: PropTypes.number.isRequired
+}

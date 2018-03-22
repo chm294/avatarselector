@@ -87,20 +87,20 @@ export default class App extends React.Component {
     return (
       <div className="avatar-picker">
         <SelectedAvatar 
-          selectedAvatar={this.state.selectedAvatar} 
-          toggleList={this.toggleList}
+        selectedAvatar={this.state.selectedAvatar} 
+        toggleList={this.toggleList}
         />
         <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={300}
+        transitionName="popover"
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
         >
         {this.state.toggleList? 
         <AvatarList
-          currentlyFocused={this.state.currentlyFocused}
-          sampleData={this.state.sampleData}
-          currentlySelected={this.state.currentlySelected}
-          onSelectAvatar={this.onSelectAvatar}
+        currentlyFocused={this.state.currentlyFocused}
+        sampleData={this.state.sampleData}
+        currentlySelected={this.state.currentlySelected}
+        onSelectAvatar={this.onSelectAvatar}
         />
         : null}
         </ReactCSSTransitionGroup>
@@ -108,5 +108,3 @@ export default class App extends React.Component {
     );
   }
 };
-
-window.test = new App();

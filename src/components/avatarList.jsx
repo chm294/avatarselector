@@ -11,14 +11,14 @@ export default class AvatarList extends React.Component {
 					<p className="text">Choose your avatar</p>
 					<ul className="avatar-list">
 						{this.props.sampleData.map( (avatar) => {
-								return <AvatarListEntry 
-								isFocused={this.props.currentlyFocused === avatar.id}
-								isSelected={this.props.currentlySelected === avatar.id}
-								avatar={avatar} 
-								key={avatar.id}
-								onSelectAvatar={this.props.onSelectAvatar}
+							return <AvatarListEntry 
+							isFocused={this.props.currentlyFocused === avatar.id}
+							isSelected={this.props.currentlySelected === avatar.id}
+							avatar={avatar} 
+							key={avatar.id}
+							onSelectAvatar={this.props.onSelectAvatar}
 							/>
-							})}
+						})}
 					</ul>
 				</div>
 			</div>
