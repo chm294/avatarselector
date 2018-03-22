@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 export default class AvatarListEntry extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick = function(avatarId) {
-    this.props.handleNewAvatar(avatarId)
-  }
-
   render() {
-      return (
-        <div onClick={() => this.handleClick(this.props.avatar.id)}>
-          <img className="avatar list-item" src={require(`../avatars${this.props.avatar.src}`)} alt=""/>
-        </div>
-      )
-    }
+    return (
+      <div>
+        <li
+        onClick={() => this.props.onSelectAvatar(this.props.avatar.id)}
+        className={`list-item ${this.props.isFocused ? "currently-focused" : null}`}
+        >
+          <img className="avatar" src={require(`../avatars${this.props.avatar.src}`)} alt=""/>
+          <div className={this.props.isSelected ? "spin" : null}></div>
+        </li>
+      </div>
+    );
   }
+}
   
 AvatarListEntry.propTypes = {
-  avatar: PropTypes.object.isRequired
+  avatar: PropTypes.object.isRequired,
+  onSelectAvatar: PropTypes.func.isRequired,
+  isFocused: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool.isRequired
 }
