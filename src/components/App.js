@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/App.css';
-import AvatarPicker from './AvatarPicker.jsx';
+import AvatarPicker from './AvatarPicker/AvatarPicker.jsx';
 
 export default function App (props) {
   return (

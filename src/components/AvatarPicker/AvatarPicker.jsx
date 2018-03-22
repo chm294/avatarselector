@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styling/App.css';
+import '../../styling/App.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AvatarList from './AvatarList.jsx';
 import SelectedAvatar from './SelectedAvatar.jsx';
@@ -23,45 +23,30 @@ export default class App extends React.Component {
       toggleList: false,
       sampleData: sampleData,
     };
-    this.handleNewAvatar = this.handleNewAvatar.bind(this);
-    this.toggleList = this.toggleList.bind(this);
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
     this.onSelectAvatar = this.onSelectAvatar.bind(this);
+    this.handleNewAvatar = this.handleNewAvatar.bind(this);
+    this.toggleList = this.toggleList.bind(this);
   }
 
+  // add keyboard event listeners
   componentDidMount() {
     document.addEventListener('keydown', (event) => {
       const keyName = event.key;
       this.handleKeyEvent(keyName);
     });
+    document.addEventListener('click', (event) => {
+      //clicking anywhere where "avatar-list" exists in the HTML (anywhere outside avatar-list)
+      //will toggle the List component to close
+      if(this.state.toggleList) {
+        if(event.target.innerHTML.includes("avatar-list")){
+          this.setState({toggleList: false});
+        }
+      }
+    })
   };
-
-  handleNewAvatar = function(avatarId) {
-    this.setState({
-      currentlySelected : avatarId,
-      currentlyFocused : avatarId
-    });
-    setTimeout(()=>{
-      this.setState({selectedAvatar : avatarId});
-    },1000);
-  };
-
-  toggleList = function() {
-    if(!this.state.toggleList) {
-      this.setState({toggleList:true});
-    } else {
-      setTimeout(() => {
-        this.setState({ toggleList: !this.state.toggleList, currentlySelected: null });
-      }, 1000);
-    };
-  };
-
-  onSelectAvatar(avatarId) {
-    this.handleNewAvatar(avatarId);
-    this.toggleList();
-  };
-
-  handleKeyEvent = function(key) {
+ 
+  handleKeyEvent(key) {
     if(key.toUpperCase() === 'A'){
       if(this.state.toggleList === false) {
         this.setState({toggleList: true});
@@ -81,12 +66,44 @@ export default class App extends React.Component {
       this.setState({currentlySelected : this.state.currentlyFocused});
       this.onSelectAvatar(this.state.currentlyFocused);
     };
+    if(key.toUpperCase() === "ESCAPE") {
+      this.setState({toggleList: false});
+    }
   };
-  
+
+  onSelectAvatar(avatarId) {
+    this.handleNewAvatar(avatarId);
+    //settimeout is only here to simulate loading time of server request / response
+    setTimeout(() => {
+      this.toggleList();
+    }, 1000);
+  };
+
+  handleNewAvatar(avatarId) {
+    this.setState({
+      currentlySelected : avatarId,
+      currentlyFocused : avatarId
+    });
+    setTimeout(()=>{
+      this.setState({selectedAvatar : avatarId});
+    },1000);
+  };
+
+  toggleList() {
+    if(!this.state.toggleList) {
+      this.setState({toggleList:true});
+    } else {
+      this.setState({ toggleList: !this.state.toggleList, 
+        currentlySelected: null 
+      });
+    };
+  };
+
   render(){
     return (
       <div className="avatar-picker">
         <SelectedAvatar 
+        isListActive={this.state.toggleList}
         selectedAvatar={this.state.selectedAvatar} 
         toggleList={this.toggleList}
         />

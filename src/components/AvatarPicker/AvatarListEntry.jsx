@@ -10,7 +10,7 @@ export default class AvatarListEntry extends React.Component {
         onClick={() => this.props.onSelectAvatar(this.props.avatar.id)}
         className={`list-item ${this.props.isFocused ? "currently-focused" : null}`}
         >
-          <img className="avatar" src={require(`../avatars${this.props.avatar.src}`)} alt=""/>
+          <img className="avatar" src={require(`../../avatars${this.props.avatar.src}`)} alt=""/>
           <div className={this.props.isSelected ? "spin" : null}></div>
         </li>
       </div>
